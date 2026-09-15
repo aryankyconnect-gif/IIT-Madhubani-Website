@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT Madhubani — Institute of Innovation and Technology, Madhubani - Science, Technology & Technical Education Govt. of Bihar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        govBlue: '#0b3954',
+                        govDarkBlue: '#062334',
+                        govGold: '#d97706',
+                        govLight: '#f8fafc',
+                        noticeRed: '#dc2626',
+                        noticeGreen: '#16a34a',
+                        noticeBlue: '#2563eb'
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        noto: ['Noto Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-ticker {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 35s linear infinite;
+        }
+        .animate-ticker:hover {
+            animation-play-state: paused;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .theme-high-contrast {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+        }
+        .theme-high-contrast header, .theme-high-contrast nav, .theme-high-contrast footer {
+            background-color: #111827 !important;
+            border-color: #374151 !important;
+        }
+        .theme-high-contrast .bg-white {
+            background-color: #1f2937 !important;
+            color: #ffffff !important;
+            border-color: #4b5563 !important;
+        }
+        .theme-sepia {
+            background-color: #fbf0d9 !important;
+            color: #433422 !important;
+        }
+        .theme-sepia header, .theme-sepia nav, .theme-sepia footer {
+            background-color: #5c4033 !important;
+            color: #fbf0d9 !important;
+        }
+        .theme-sepia .bg-white {
+            background-color: #f5e6cc !important;
+            color: #433422 !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 antialiased selection:bg-govBlue selection:text-white transition-colors duration-200" id="main-body">
+
+    <header class="bg-govDarkBlue text-slate-300 text-xs py-1.5 px-4 border-b border-slate-700">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-govGold"></i> Helpline: +91-9470002100</span>
+                <span class="hidden md:inline-flex items-center gap-1.5"><i class="fa-solid fa-envelope text-govGold"></i> principal@iitmadhubani.ac.in</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="font-medium text-slate-200">Font Size:</span>
+                <button onclick="adjustFontSize('sm')" class="px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded">A-</button>
+                <button onclick="adjustFontSize('md')" class="px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-bold">A</button>
+                <button onclick="adjustFontSize('lg')" class="px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded">A+</button>
+                <span class="text-slate-600">|</span>
+                <span class="font-medium text-slate-200">Theme:</span>
+                <button onclick="setTheme('default')" class="w-4 h-4 rounded-full bg-blue-900 border border-white" title="Standard Theme"></button>
+                <button onclick="setTheme('high-contrast')" class="w-4 h-4 rounded-full bg-black border border-white" title="High Contrast"></button>
+                <button onclick="setTheme('sepia')" class="w-4 h-4 rounded-full bg-amber-800 border border-white" title="Sepia Theme"></button>
+                <span class="text-slate-600">|</span>
+                <a href="#login" onclick="navigate('login/admin')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-lock"></i> Portal Login</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-white border-b shadow-sm py-3 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4 text-center md:text-left cursor-pointer" onclick="navigate('home')">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center p-1 shadow-inner">
+                    <img src="https://placehold.co/100x100/0b3954/ffffff?text=IITM" alt="IIT Madhubani Logo" class="w-full h-full object-contain rounded-full" onerror="this.src='https://placehold.co/100x100/0b3954/ffffff?text=IITM'">
+                </div>
+                <div>
+                    <h2 class="text-xs sm:text-sm font-semibold tracking-wider text-slate-600 uppercase font-noto">Department of Science, Technology & Technical Education, Govt. Of Bihar</h2>
+                    <h1 class="text-xl sm:text-3xl font-extrabold text-govBlue tracking-tight mt-0.5">IIT Madhubani — Institute of Innovation and Technology, Madhubani</h1>
+                    <p class="text-xs text-slate-500 mt-0.5">सत्यं शिवं सुन्दरम् — Approved by AICTE, New Delhi & Affiliated to BCECEB / BEU Patna</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden lg:block">
+                    <p class="text-xs font-bold text-slate-700">Govt. of Bihar Initiative</p>
+                    <p class="text-[11px] text-slate-500">Excellence in Technical Education</p>
+                </div>
+                <div class="w-16 h-16 flex-shrink-0 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-center p-1 shadow-sm">
+                    <img src="https://placehold.co/120x120/d97706/ffffff?text=Bihar+Govt" alt="Govt of Bihar Emblem" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/d97706/ffffff?text=Bihar'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bg-govBlue text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center relative">
+            <div class="flex items-center md:hidden py-3">
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-white hover:text-govGold focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+                <span class="ml-3 font-bold text-sm">Navigation Menu</span>
+            </div>
+
+            <ul class="hidden md:flex items-center flex-wrap text-sm font-medium">
+                <li>
+                    <a href="#" onclick="navigate('home')" class="px-4 py-3.5 hover:bg-govDarkBlue block transition-colors bg-govDarkBlue"><i class="fa-solid fa-house"></i></a>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        About Us <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full w-64 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#" onclick="navigate('about/history')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">History</a>
+                        <a href="#" onclick="navigate('about/principal-message')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Principal's Message</a>
+                        <a href="#" onclick="navigate('about/vision-mission')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Vision & Mission</a>
+                        <a href="#" onclick="navigate('about/administration')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Administration</a>
+                        <a href="#" onclick="navigate('about/affiliation')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Affiliation</a>
+                        <a href="#" onclick="navigate('about/allotment')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Allotment and Surrender Report</a>
+                        <a href="#" onclick="navigate('about/visit')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Visit Us</a>
+                        <a href="#" onclick="navigate('about/contact')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Contact Us</a>
+                    </div>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        Academics <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full w-64 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto">
+                        <a href="#" onclick="navigate('academics/admission')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Admission</a>
+                        <a href="#" onclick="navigate('academics/sexual-harassment')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Sexual Harassment Cell</a>
+                        <a href="#" onclick="navigate('academics/regulation')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Academic Regulation</a>
+                        <a href="#" onclick="navigate('academics/calendar')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Academic Calendar</a>
+                        <a href="#" onclick="navigate('academics/counsellor')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Student Counsellor</a>
+                        <a href="#" onclick="navigate('academics/holidays')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">List of Holidays</a>
+                        <a href="#" onclick="navigate('academics/attendance')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Attendance</a>
+                        <a href="#" onclick="navigate('academics/syllabus')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Syllabus</a>
+                        <a href="#" onclick="navigate('academics/disciplinary')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Disciplinary Rule</a>
+                        <a href="#" onclick="navigate('academics/antiragging')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs font-semibold text-red-600">Anti Ragging Cell</a>
+                        <a href="#" onclick="navigate('academics/mom')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">MOM of Academic Council</a>
+                        <a href="#" onclick="navigate('academics/govt-notice')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Notice from Govt.</a>
+                    </div>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        Department <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full w-64 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#" onclick="navigate('departments/civil')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Civil Engineering</a>
+                        <a href="#" onclick="navigate('departments/electrical')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Electrical Engineering</a>
+                        <a href="#" onclick="navigate('departments/mechanical')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Mechanical Engineering</a>
+                        <a href="#" onclick="navigate('departments/ash')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Applied Science & Humanities</a>
+                        <a href="#" onclick="navigate('departments/cse')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Computer Science & Engineering</a>
+                    </div>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        Facilities <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full w-56 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto">
+                        <a href="#" onclick="navigate('facilities/computer-center')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Computer Center</a>
+                        <a href="#" onclick="navigate('facilities/library')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Central Library</a>
+                        <a href="#" onclick="navigate('facilities/hostels')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Hostels</a>
+                        <a href="#" onclick="navigate('facilities/sports')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Sports Facilities</a>
+                        <a href="#" onclick="navigate('facilities/medical')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Medical Facilities</a>
+                        <a href="#" onclick="navigate('facilities/guesthouse')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Guest House</a>
+                        <a href="#" onclick="navigate('facilities/gymnasium')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Gymnasium</a>
+                        <a href="#" onclick="navigate('facilities/bank')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Bank</a>
+                        <a href="#" onclick="navigate('facilities/club')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Club</a>
+                        <a href="#" onclick="navigate('facilities/wifi')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Wi-Fi</a>
+                    </div>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        T & P <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full w-52 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#" onclick="navigate('placement/about')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">About Placement</a>
+                        <a href="#" onclick="navigate('placement/brochure')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Placement Brochure</a>
+                        <a href="#" onclick="navigate('placement/list')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Placement List</a>
+                    </div>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        Gallery <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute left-0 top-full w-52 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#" onclick="navigate('gallery/images')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Image Galleries</a>
+                        <a href="#" onclick="navigate('gallery/videos')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Video Galleries</a>
+                        <a href="#" onclick="navigate('gallery/media')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Media Galleries</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" onclick="navigate('approval/aicte')" class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors block text-xs">AICTE</a>
+                </li>
+                <li class="relative group">
+                    <button class="px-3 py-3.5 hover:bg-govDarkBlue transition-colors flex items-center gap-1.5 focus:outline-none">
+                        Login <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute right-0 top-full w-48 bg-white text-slate-800 shadow-xl rounded-b-md border-t-2 border-govGold opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="#" onclick="navigate('login/admin')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Admin Panel</a>
+                        <a href="#" onclick="navigate('login/faculty')" class="block px-4 py-2 hover:bg-slate-100 border-b border-slate-100 text-xs">Faculty Login</a>
+                        <a href="#" onclick="navigate('login/student')" class="block px-4 py-2 hover:bg-slate-100 text-xs">Student Login</a>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="hidden md:flex items-center">
+                <a href="#" onclick="navigate('login/admin')" class="bg-govGold hover:bg-amber-600 text-white px-3 py-1.5 rounded text-xs font-bold transition-colors shadow">
+                    <i class="fa-solid fa-user-lock mr-1"></i> Portal Login
+                </a>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-govDarkBlue border-t border-slate-700 px-4 py-3 space-y-2 max-h-[80vh] overflow-y-auto">
+            <a href="#" onclick="navigate('home'); toggleMobileMenu();" class="block py-2 border-b border-slate-800 text-sm">Home</a>
+            <div class="py-1 border-b border-slate-800">
+                <p class="text-govGold font-bold text-xs uppercase mb-1">About Us</p>
+                <a href="#" onclick="navigate('about/history'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">History</a>
+                <a href="#" onclick="navigate('about/principal-message'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Principal's Message</a>
+                <a href="#" onclick="navigate('about/vision-mission'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Vision & Mission</a>
+                <a href="#" onclick="navigate('about/administration'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Administration</a>
+                <a href="#" onclick="navigate('about/contact'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Contact Us</a>
+            </div>
+            <div class="py-1 border-b border-slate-800">
+                <p class="text-govGold font-bold text-xs uppercase mb-1">Academics</p>
+                <a href="#" onclick="navigate('academics/admission'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Admission</a>
+                <a href="#" onclick="navigate('academics/calendar'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Academic Calendar</a>
+                <a href="#" onclick="navigate('academics/syllabus'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Syllabus</a>
+                <a href="#" onclick="navigate('academics/antiragging'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-red-400">Anti Ragging Cell</a>
+            </div>
+            <div class="py-1 border-b border-slate-800">
+                <p class="text-govGold font-bold text-xs uppercase mb-1">Departments</p>
+                <a href="#" onclick="navigate('departments/civil'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Civil Engineering</a>
+                <a href="#" onclick="navigate('departments/electrical'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Electrical Engineering</a>
+                <a href="#" onclick="navigate('departments/mechanical'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Mechanical Engineering</a>
+                <a href="#" onclick="navigate('departments/cse'); toggleMobileMenu();" class="block py-1 pl-3 text-xs text-slate-300">Computer Science</a>
+            </div>
+            <a href="#" onclick="navigate('gallery/images'); toggleMobileMenu();" class="block py-2 border-b border-slate-800 text-sm">Gallery</a>
+            <a href="#" onclick="navigate('approval/aicte'); toggleMobileMenu();" class="block py-2 border-b border-slate-800 text-sm">AICTE Approvals</a>
+            <a href="#" onclick="navigate('login/admin'); toggleMobileMenu();" class="block py-2 text-sm text-govGold font-bold">Portal Login</a>
+        </div>
+    </nav>
+
+    <div class="bg-amber-500 text-slate-900 border-b border-amber-600 py-2 px-4 overflow-hidden shadow-inner flex items-center">
+        <div class="bg-red-700 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider flex-shrink-0 z-10 shadow flex items-center gap-1.5 mr-3">
+            <i class="fa-solid fa-bullhorn animate-bounce"></i> Notice Board
+        </div>
+        <div class="overflow-hidden whitespace-nowrap w-full">
+            <div class="animate-ticker text-xs sm:text-sm font-medium text-slate-900">
+                <span class="mx-4"><span class="bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-bold mr-2">NEW</span> Fees to be charged, Reservation Policy, Admission Policy and Document Retention Policy are uploaded in University's Website.</span>
+                <span class="mx-4"><span class="bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-bold mr-2">NEW</span> Regarding commencement of Mid Semester examination of B.Tech 2nd Semester, 5th Semester and 8th Semester.</span>
+                <span class="mx-4"><span class="bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-bold mr-2">NEW</span> Regarding cancellation of tender no IITM/01/2026-27 and IITM/02/2026-27.</span>
+            </div>
+        </div>
+    </div>
+
+    <main id="app-container" class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Rendered dynamically by JavaScript router -->
+    </main>
+
+    <section class="bg-slate-900 text-white py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-lg font-bold uppercase tracking-wider mb-4 text-govGold">Follow Us On Social Network</h3>
+            <div class="flex justify-center gap-4">
+                <a href="https://twitter.com" target="_blank" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-colors shadow">
+                    <i class="fa-brands fa-x-twitter text-lg"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" class="w-10 h-10 bg-blue-800 hover:bg-blue-900 rounded-full flex items-center justify-center text-white transition-colors shadow">
+                    <i class="fa-brands fa-facebook-f text-lg"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition-colors shadow">
+                    <i class="fa-brands fa-youtube text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-govDarkBlue text-slate-300 border-t border-slate-700 pt-10 pb-6">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div>
+                <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Quick Navigation</h5>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" onclick="navigate('academics/calendar')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Academic Calendar</a></li>
+                    <li><a href="#" onclick="navigate('academics/admission')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Vocational Courses</a></li>
+                    <li><a href="#" onclick="navigate('about/administration')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Phone Directory</a></li>
+                    <li><a href="#" onclick="navigate('placement/about')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Placement Cell</a></li>
+                    <li><a href="#" onclick="navigate('academics/antiragging')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Anti Ragging Cell</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Important Policies & Rules</h5>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" onclick="navigate('academics/disciplinary')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Disciplinary Rule</a></li>
+                    <li><a href="#" onclick="navigate('academics/syllabus')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Syllabus & Curriculum</a></li>
+                    <li><a href="#" onclick="navigate('facilities/hostels')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Hostels & Accommodation</a></li>
+                    <li><a href="#" onclick="navigate('academics/govt-notice')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Notice from Govt.</a></li>
+                    <li><a href="#" onclick="navigate('placement/list')" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> Placement List</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Location & Address</h5>
+                <p class="text-xs leading-relaxed mb-3">
+                    IIT Madhubani — Institute of Innovation and Technology, Madhubani<br>
+                    At-Sagarpur, Pandal, P.S. Sakri,<br>
+                    P.O. Pandal, District-Madhubani<br>
+                    Bihar, India - 847211
+                </p>
+                <p class="text-xs mb-1"><i class="fa-solid fa-phone text-govGold mr-2"></i> +91-9470002100</p>
+                <p class="text-xs mb-1"><i class="fa-solid fa-envelope text-govGold mr-2"></i> principal@iitmadhubani.ac.in</p>
+            </div>
+            <div>
+                <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Important Links</h5>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://www.beu-bih.ac.in" target="_blank" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> BEU Patna</a></li>
+                    <li><a href="https://www.aicte-india.org" target="_blank" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> AICTE New Delhi</a></li>
+                    <li><a href="https://dst.bihar.gov.in" target="_blank" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> DST, Government of Bihar</a></li>
+                    <li><a href="https://bceceboard.bihar.gov.in" target="_blank" class="hover:text-govGold transition-colors"><i class="fa-solid fa-angle-right mr-1.5"></i> BCECEB Patna</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 border-t border-slate-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+            <p>&copy; Copyright 2026 IIT Madhubani. All Rights Reserved.</p>
+            <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="#" onclick="navigate('about/contact')" class="hover:text-white">Contact us</a>
+                <span>|</span>
+                <a href="#" onclick="navigate('about/vision-mission')" class="hover:text-white">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox-modal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden shadow-2xl">
+            <div class="bg-govDarkBlue text-white px-4 py-3 flex justify-between items-center">
+                <h4 id="lightbox-title" class="font-bold text-sm">Gallery Image</h4>
+                <button onclick="closeLightbox()" class="text-slate-300 hover:text-white text-lg font-bold">&times;</button>
+            </div>
+            <div class="p-4 bg-slate-900 flex justify-center items-center h-[400px]">
+                <img id="lightbox-img" src="" alt="Expanded View" class="max-h-full max-w-full object-contain">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const siteImages = {
+            principal: "/images/principal/principal.jpg",
+            campus: {
+                main: "/images/campus/main-campus.jpg",
+                academic: null
+            },
+            facilities: {
+                library: "/images/facilities/library.jpg",
+                computerLab: "/images/facilities/computer-lab.jpg",
+                workshop: "/images/facilities/workshop.jpg",
+                gym: "/images/facilities/gym.jpg",
+                hostel: null,
+                sports: null,
+                medical: null,
+                guestHouse: null,
+                bank: null,
+                club: null,
+                wifi: null
+            },
+            gallery: [
+                { id: 1, src: "/images/gallery/campus-building.jpg", title: "Main Administrative Building", date: "Jan 2026" },
+                { id: 2, src: "/images/gallery/computer-lab.jpg", title: "Advanced Computing Lab", date: "Feb 2026" },
+                { id: 3, src: "/images/gallery/workshop.jpg", title: "Mechanical Engineering Workshop", date: "Mar 2026" },
+                { id: 4, src: null, title: "Central Library Reading Hall", date: "Apr 2026" },
+                { id: 5, src: null, title: "Civil Engineering Survey Lab", date: "May 2026" },
+                { id: 6, src: null, title: "Annual Sports Meet Ground", date: "Jun 2026" }
+            ]
+        };
+
+        function renderOptionalImage(imagePath, altText, containerClass = "h-48 w-full bg-slate-100", iconClass = "fa-solid fa-image text-slate-400 text-3xl") {
+            if (!imagePath) {
+                return `
+                    <div class="${containerClass} flex flex-col items-center justify-center bg-slate-100 border border-slate-200 text-center p-4">
+                        <i class="${iconClass} mb-2"></i>
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Photo Coming Soon</span>
+                    </div>
+                `;
+            }
+            return `
+                <div class="${containerClass} overflow-hidden bg-slate-100 relative">
+                    <img src="${imagePath}" alt="${altText}" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\\'w-full h-full flex flex-col items-center justify-center bg-slate-100 border border-slate-200 text-center p-4\\'><i class=\\'fa-solid fa-image text-slate-400 text-3xl mb-2\\'></i><span class=\\'text-xs font-semibold text-slate-500 uppercase tracking-wider\\'>Photo Coming Soon</span></div>';">
+                </div>
+            `;
+        }
+
+        let currentSlideIndex = 0;
+        let slideInterval;
+
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (slides.length === 0) return;
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === currentSlideIndex ? '1' : '0';
+            });
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (slides.length === 0) return;
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            initCarousel();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (slides.length === 0) return;
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            initCarousel();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            initCarousel();
+        }
+
+        function startCarouselTimer() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        function navigate(route) {
+            window.location.hash = route;
+            renderRoute(route);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderRoute(route) {
+            const container = document.getElementById('app-container');
+            if (!route || route === 'home') {
+                container.innerHTML = getHomeHTML();
+                setTimeout(() => {
+                    initCarousel();
+                    startCarouselTimer();
+                }, 100);
+                return;
+            }
+
+            let pageTitle = "IIT Madhubani";
+            let breadcrumb = "Home";
+            let contentHTML = "";
+
+            if (route.startsWith('about/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "About Us > " + formatTitle(sub);
+                pageTitle = formatTitle(sub);
+                contentHTML = getAboutContent(sub);
+            } else if (route.startsWith('academics/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "Academics > " + formatTitle(sub);
+                pageTitle = formatTitle(sub);
+                contentHTML = getAcademicsContent(sub);
+            } else if (route.startsWith('departments/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "Department > " + formatTitle(sub) + " Engineering";
+                pageTitle = formatTitle(sub) + " Engineering Department";
+                contentHTML = getDepartmentContent(sub);
+            } else if (route.startsWith('facilities/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "Facilities > " + formatTitle(sub);
+                pageTitle = formatTitle(sub);
+                contentHTML = getFacilityContent(sub);
+            } else if (route.startsWith('placement/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "Training & Placement > " + formatTitle(sub);
+                pageTitle = formatTitle(sub);
+                contentHTML = getPlacementContent(sub);
+            } else if (route.startsWith('gallery/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "Gallery > " + formatTitle(sub);
+                pageTitle = formatTitle(sub) + " Gallery";
+                contentHTML = getGalleryContent(sub);
+            } else if (route === 'approval/aicte') {
+                breadcrumb = "Approval > AICTE";
+                pageTitle = "AICTE Approvals & Accreditation";
+                contentHTML = getAicteContent();
+            } else if (route.startsWith('login/')) {
+                const sub = route.split('/')[1];
+                breadcrumb = "Portal > " + formatTitle(sub) + " Login";
+                pageTitle = formatTitle(sub) + " Portal Authentication";
+                contentHTML = getLoginContent(sub);
+            } else {
+                contentHTML = `<div class="p-8 text-center"><h3 class="text-xl font-bold text-govBlue">Page under maintenance or coming soon.</h3><p class="text-sm text-slate-500 mt-2">Please return to home or select another menu item.</p></div>`;
+            }
+
+            container.innerHTML = `
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 md:p-8 mb-8">
+                    <div class="text-xs text-slate-500 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+                        <a href="#" onclick="navigate('home')" class="hover:text-govBlue"><i class="fa-solid fa-house"></i> Home</a>
+                        <span>/</span>
+                        <span class="font-semibold text-slate-700">${breadcrumb}</span>
+                    </div>
+                    <div class="border-l-4 border-govGold pl-3 mb-6">
+                        <h2 class="text-2xl font-extrabold text-govBlue uppercase tracking-wide">${pageTitle}</h2>
+                    </div>
+                    <div class="prose max-w-none text-slate-700 text-sm leading-relaxed">
+                        ${contentHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function formatTitle(str) {
+            return str.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        }
+
+        function getHomeHTML() {
+            return `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-8 flex flex-col">
+                        <div class="relative bg-slate-900 rounded-lg overflow-hidden shadow-md border border-slate-200 h-[320px] sm:h-[420px] md:h-[460px] group">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+                                ${renderOptionalImage(siteImages.campus.main, "IIT Madhubani Campus", "w-full h-full", "fa-solid fa-building-columns text-slate-500 text-5xl")}
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <div>
+                                        <span class="bg-govGold text-white text-xs font-bold px-2.5 py-1 rounded">Campus View</span>
+                                        <h3 class="text-white text-lg sm:text-2xl font-bold mt-1">State-of-the-Art Infrastructure & Laboratories</h3>
+                                        <p class="text-slate-200 text-xs sm:text-sm mt-1">Providing exceptional technical education in Mithila region of Bihar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                                ${renderOptionalImage(siteImages.facilities.workshop, "Academic Block", "w-full h-full", "fa-solid fa-gears text-slate-500 text-5xl")}
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <div>
+                                        <span class="bg-govGold text-white text-xs font-bold px-2.5 py-1 rounded">Academics</span>
+                                        <h3 class="text-white text-lg sm:text-2xl font-bold mt-1">Dedicated Engineering Workshops & Labs</h3>
+                                        <p class="text-slate-200 text-xs sm:text-sm mt-1">Equipped with modern machinery and experimental setups.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                                ${renderOptionalImage(siteImages.facilities.library, "Central Library", "w-full h-full", "fa-solid fa-book text-slate-500 text-5xl")}
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <div>
+                                        <span class="bg-govGold text-white text-xs font-bold px-2.5 py-1 rounded">Facilities</span>
+                                        <h3 class="text-white text-lg sm:text-2xl font-bold mt-1">Central Library & High-Speed Computing Center</h3>
+                                        <p class="text-slate-200 text-xs sm:text-sm mt-1">Empowering students with endless knowledge resources.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                            <div class="absolute bottom-3 right-4 flex gap-1.5 z-10">
+                                <button onclick="currentSlide(0)" class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors"></button>
+                                <button onclick="currentSlide(1)" class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors"></button>
+                                <button onclick="currentSlide(2)" class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 bg-white rounded-lg shadow-md border border-slate-200 flex flex-col h-[320px] sm:h-[420px] md:h-[460px]">
+                        <div class="bg-govBlue text-white px-4 py-3 rounded-t-lg flex justify-between items-center">
+                            <h3 class="font-bold text-sm tracking-wide flex items-center gap-2">
+                                <i class="fa-solid fa-bell text-govGold animate-pulse"></i> Latest News / Updates
+                            </h3>
+                            <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Live Feed</span>
+                        </div>
+                        
+                        <div class="p-3 overflow-y-auto flex-grow space-y-3">
+                            <div class="border-b border-slate-100 pb-2.5 hover:bg-slate-50 p-2 rounded transition-colors">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded">NOTICE</span>
+                                    <span class="text-[11px] text-slate-500"><i class="fa-regular fa-calendar"></i> 14 Sep 2026</span>
+                                </div>
+                                <a href="#" onclick="navigate('academics/calendar')" class="text-xs font-semibold text-govBlue hover:underline leading-snug block">
+                                    Regarding commencement of Mid Semester exam for B.Tech 2nd, 5th and 8th semester.
+                                </a>
+                            </div>
+                            <div class="border-b border-slate-100 pb-2.5 hover:bg-slate-50 p-2 rounded transition-colors">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded">ACADEMIC</span>
+                                    <span class="text-[11px] text-slate-500"><i class="fa-regular fa-calendar"></i> 10 Sep 2026</span>
+                                </div>
+                                <a href="#" onclick="navigate('academics/attendance')" class="text-xs font-semibold text-govBlue hover:underline leading-snug block">
+                                    Regarding Commencement of 3rd Semester Classes and Registration guidelines.
+                                </a>
+                            </div>
+                            <div class="border-b border-slate-100 pb-2.5 hover:bg-slate-50 p-2 rounded transition-colors">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded">TENDER</span>
+                                    <span class="text-[11px] text-slate-500"><i class="fa-regular fa-calendar"></i> 05 Sep 2026</span>
+                                </div>
+                                <a href="#" onclick="navigate('academics/govt-notice')" class="text-xs font-semibold text-govBlue hover:underline leading-snug block">
+                                    Regarding cancellation of tender no IITM/01/2026-27 and IITM/02/2026-27 due to administrative reasons.
+                                </a>
+                            </div>
+                            <div class="border-b border-slate-100 pb-2.5 hover:bg-slate-50 p-2 rounded transition-colors">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded">GENERAL</span>
+                                    <span class="text-[11px] text-slate-500"><i class="fa-regular fa-calendar"></i> 01 Sep 2026</span>
+                                </div>
+                                <a href="#" onclick="navigate('academics/admission')" class="text-xs font-semibold text-govBlue hover:underline leading-snug block">
+                                    Regarding 4th Semester course registration and submission of examination fees.
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-2.5 bg-slate-50 border-t text-center rounded-b-lg">
+                            <a href="#" onclick="navigate('academics/govt-notice')" class="text-xs font-bold text-govBlue hover:underline flex items-center justify-center gap-1">
+                                View All Circulars & Notices <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="mt-8">
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 md:p-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-4 flex flex-col items-center">
+                                <div class="w-full max-w-xs bg-slate-50 border border-slate-200 rounded-lg p-3 text-center shadow-sm">
+                                    <div class="h-64 w-full rounded-md overflow-hidden mb-3">
+                                        ${renderOptionalImage(siteImages.principal, "Principal, IIT Madhubani", "h-64 w-full rounded-md", "fa-solid fa-user-tie text-slate-400 text-5xl")}
+                                    </div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Prof. (Dr.) Principal</h4>
+                                    <p class="text-xs text-govBlue font-medium">Principal, IIT Madhubani</p>
+                                    <p class="text-[11px] text-slate-500 mt-1">Department of Science, Technology & Technical Education</p>
+                                    <button onclick="navigate('about/principal-message')" class="mt-3 bg-govBlue text-white px-3 py-1 rounded text-xs font-bold hover:bg-govDarkBlue transition-colors">Read Message</button>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-8">
+                                <div class="border-b-2 border-govGold pb-2 mb-4">
+                                    <h2 class="text-2xl font-extrabold text-govBlue uppercase tracking-wide">Welcome to IIT Madhubani — Institute of Innovation and Technology, Madhubani</h2>
+                                </div>
+                                <p class="text-slate-700 text-sm leading-relaxed mb-4">
+                                    IIT Madhubani — Institute of Innovation and Technology, Madhubani is established under the Department of Science, Technology and Technical Education, Govt. of Bihar. The institution is dedicated to imparting world-class technical education, fostering innovative research, and nurturing young engineering minds to solve real-world industrial and societal challenges.
+                                </p>
+                                <p class="text-slate-700 text-sm leading-relaxed mb-6">
+                                    Located in the culturally rich land of Madhubani, our campus provides an inspiring environment equipped with modern laboratories, dedicated faculty members, well-stocked central library, and vibrant student clubs. We strive for all-round personality development, ethical values, and professional competence.
+                                </p>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                                    <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                                        <span class="block text-2xl font-black text-govBlue">04</span>
+                                        <span class="text-xs font-semibold text-slate-600 uppercase">Engineering Disciplines</span>
+                                    </div>
+                                    <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                                        <span class="block text-2xl font-black text-govBlue">100%</span>
+                                        <span class="text-xs font-semibold text-slate-600 uppercase">Dedicated Faculty</span>
+                                    </div>
+                                    <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                                        <span class="block text-2xl font-black text-govBlue">2019</span>
+                                        <span class="text-xs font-semibold text-slate-600 uppercase">Established Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-bold text-govBlue uppercase tracking-wide">Academic Departments</h3>
+                        <p class="text-xs text-slate-500">Explore our undergraduate engineering programs</p>
+                        <div class="w-16 h-1 bg-govGold mx-auto mt-2"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow text-center group">
+                            <div class="w-12 h-12 bg-blue-50 text-govBlue rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-govBlue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-building-columns text-lg"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Civil Engineering</h4>
+                            <p class="text-xs text-slate-500 mb-3">Surveying, Geotechnical, Structural & Environmental Engineering.</p>
+                            <a href="#" onclick="navigate('departments/civil')" class="text-xs font-bold text-govBlue hover:underline">Explore Department &rarr;</a>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow text-center group">
+                            <div class="w-12 h-12 bg-blue-50 text-govBlue rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-govBlue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-bolt text-lg"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Electrical Engineering</h4>
+                            <p class="text-xs text-slate-500 mb-3">Power systems, Machines, Control systems & Power electronics.</p>
+                            <a href="#" onclick="navigate('departments/electrical')" class="text-xs font-bold text-govBlue hover:underline">Explore Department &rarr;</a>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow text-center group">
+                            <div class="w-12 h-12 bg-blue-50 text-govBlue rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-govBlue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-gears text-lg"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Mechanical Engineering</h4>
+                            <p class="text-xs text-slate-500 mb-3">Thermal, Manufacturing, CAD/CAM and Machine design.</p>
+                            <a href="#" onclick="navigate('departments/mechanical')" class="text-xs font-bold text-govBlue hover:underline">Explore Department &rarr;</a>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow text-center group">
+                            <div class="w-12 h-12 bg-blue-50 text-govBlue rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-govBlue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-laptop-code text-lg"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Computer Science & Engg.</h4>
+                            <p class="text-xs text-slate-500 mb-3">Algorithms, AI/ML, Data Structures, Web & Software Engg.</p>
+                            <a href="#" onclick="navigate('departments/cse')" class="text-xs font-bold text-govBlue hover:underline">Explore Department &rarr;</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-govBlue uppercase tracking-wide">Latest Campus Gallery</h3>
+                            <p class="text-xs text-slate-500">Glimpses of infrastructure and student activities</p>
+                        </div>
+                        <a href="#" onclick="navigate('gallery/images')" class="bg-govGold hover:bg-amber-600 text-white px-3 py-1.5 rounded text-xs font-bold transition-colors shadow">View All Gallery</a>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        ${siteImages.gallery.slice(0, 3).map(img => `
+                            <div onclick="openLightbox('${img.src || ''}', '${img.title}')" class="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 cursor-pointer group hover:shadow-md transition-shadow">
+                                ${renderOptionalImage(img.src, img.title, "h-48 w-full", "fa-solid fa-image text-slate-400 text-3xl")}
+                                <div class="p-3">
+                                    <span class="text-[10px] text-govGold font-bold">${img.date}</span>
+                                    <h4 class="font-bold text-slate-800 text-xs mt-0.5">${img.title}</h4>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function getAboutContent(sub) {
+            if (sub === 'history') {
+                return `<p>IIT Madhubani — Institute of Innovation and Technology, Madhubani was established in the year 2019 under the flagship initiative of the Department of Science, Technology and Technical Education, Government of Bihar. Situated in the vibrant Mithila region, the institution aims to deliver rigorous engineering education and technical proficiency to aspirants across the state and country.</p><p class="mt-4">Starting with foundational undergraduate branches, the college has steadily expanded its infrastructure, labs, and faculty expertise to cultivate a robust technological ecosystem.</p>`;
+            } else if (sub === 'principal-message') {
+                return `<div class="flex flex-col md:flex-row gap-6 items-center"><div class="w-48 flex-shrink-0">${renderOptionalImage(siteImages.principal, "Principal, IIT Madhubani", "w-48 h-64 rounded-lg shadow-md", "fa-solid fa-user-tie text-slate-400 text-5xl")}</div><div><h4 class="font-bold text-lg text-govBlue mb-2">Message from the Principal's Desk</h4><p>Dear Students, Faculty and Visitors,</p><p class="mt-2">It is my immense privilege to welcome you to IIT Madhubani — Institute of Innovation and Technology, Madhubani. Our commitment lies in fostering academic excellence, moral integrity, and practical problem-solving capabilities. We empower our students with state-of-the-art labs, workshops, and mentorship to excel in the competitive global arena.</p><p class="mt-2 font-semibold text-govBlue">— Prof. (Dr.) Principal, IIT Madhubani</p></div></div>`;
+            } else if (sub === 'vision-mission') {
+                return `<h4 class="font-bold text-govBlue text-base mb-2">Our Vision</h4><p>To emerge as a premier center of technical education and research, producing globally competent, socially responsible, and innovative engineering professionals.</p><h4 class="font-bold text-govBlue text-base mt-4 mb-2">Our Mission</h4><ul class="list-disc pl-5 space-y-1"><li>To impart high-quality technical education through rigorous curriculum and practical training.</li><li>To foster an environment of innovation, research, and collaborative problem solving.</li><li>To instill ethical values, leadership qualities, and professional responsibility among students.</li></ul>`;
+            } else if (sub === 'administration') {
+                return `<table class="w-full border-collapse border border-slate-300 text-xs text-left"><tr class="bg-govBlue text-white"><th class="p-2 border">Name</th><th class="p-2 border">Designation</th><th class="p-2 border">Department</th><th class="p-2 border">Email</th></tr><tr><td class="p-2 border font-semibold">Prof. (Dr.) Principal</td><td class="p-2 border">Principal</td><td class="p-2 border">Administration</td><td class="p-2 border">principal@iitmadhubani.ac.in</td></tr><tr><td class="p-2 border font-semibold">Dr. A. Kumar</td><td class="p-2 border">Head of Department</td><td class="p-2 border">Computer Science & Engg.</td><td class="p-2 border">cse@iitmadhubani.ac.in</td></tr><tr><td class="p-2 border font-semibold">Dr. S. Mishra</td><td class="p-2 border">Head of Department</td><td class="p-2 border">Civil Engineering</td><td class="p-2 border">civil@iitmadhubani.ac.in</td></tr></table>`;
+            } else if (sub === 'affiliation') {
+                return `<p>IIT Madhubani — Institute of Innovation and Technology, Madhubani is officially approved by <strong>AICTE (All India Council for Technical Education), New Delhi</strong> and is affiliated with <strong>Bihar Engineering University (BEU), Patna</strong> as well as the Bihar Combined Entrance Competitive Examination Board (BCECEB).</p>`;
+            } else if (sub === 'contact') {
+                return `<p><strong>Address:</strong><br>IIT Madhubani — Institute of Innovation and Technology, Madhubani<br>At-Sagarpur, Pandal, P.S. Sakri, P.O. Pandal, District-Madhubani, Bihar - 847211</p><p class="mt-3"><strong>Helpline:</strong> +91-9470002100</p><p class="mt-1"><strong>Email:</strong> principal@iitmadhubani.ac.in</p>`;
+            }
+            return `<p>Detailed information regarding ${formatTitle(sub)} is currently updated as per institutional guidelines.</p>`;
+        }
+
+        function getAcademicsContent(sub) {
+            if (sub === 'admission') {
+                return `<p>Admissions to the 4-year B.Tech degree programs at IIT Madhubani are conducted strictly through the <strong>UGEAC (Undergraduate Engineering Admission Counselling)</strong> conducted by the <strong>BCECEB</strong> based on valid <strong>JEE Main</strong> scores.</p>`;
+            } else if (sub === 'calendar') {
+                return `<p>The academic calendar outlines the timeline for theory classes, mid-semester examinations, assignments, cultural events, and end-semester university examinations as prescribed by Bihar Engineering University, Patna.</p>`;
+            } else if (sub === 'syllabus') {
+                return `<p>Syllabus for all semesters across Civil, Electrical, Mechanical, and Computer Science Engineering strictly follows the choice-based credit system (CBCS) formulated by Bihar Engineering University.</p>`;
+            } else if (sub === 'antiragging') {
+                return `<div class="bg-red-50 border border-red-200 p-4 rounded text-red-800"><h4 class="font-bold text-sm mb-1"><i class="fa-solid fa-triangle-exclamation"></i> Zero Tolerance Policy Against Ragging</h4><p class="text-xs">IIT Madhubani maintains a strict zero-tolerance policy against ragging in any form within or outside the campus. Anti-Ragging committee members are available round the clock.</p></div>`;
+            }
+            return `<p>Official documents and circulars regarding ${formatTitle(sub)} are published regularly on this portal.</p>`;
+        }
+
+        function getDepartmentContent(sub) {
+            const deptNames = { civil: "Civil Engineering", electrical: "Electrical Engineering", mechanical: "Mechanical Engineering", ash: "Applied Science & Humanities", cse: "Computer Science & Engineering" };
+            return `<p>Welcome to the Department of <strong>${deptNames[sub] || formatTitle(sub)}</strong> at IIT Madhubani. The department offers comprehensive undergraduate curriculum, state-of-the-art laboratories, experienced faculty members, and project-based learning opportunities.</p><h4 class="font-bold text-govBlue mt-4 mb-2">Key Laboratories & Facilities</h4><ul class="list-disc pl-5 space-y-1"><li>Modern experimental setups and apparatus</li><li>Computing facility with high-speed internet</li><li>Dedicated seminar and project presentation hall</li></ul>`;
+        }
+
+        function getFacilityContent(sub) {
+            let facilityImage = null;
+            if (sub === 'library') facilityImage = siteImages.facilities.library;
+            if (sub === 'computer-center') facilityImage = siteImages.facilities.computerLab;
+            if (sub === 'gymnasium') facilityImage = siteImages.facilities.gym;
+            if (sub === 'hostels') facilityImage = siteImages.facilities.hostel;
+            if (sub === 'sports') facilityImage = siteImages.facilities.sports;
+
+            return `
+                <div class="mb-6">
+                    ${renderOptionalImage(facilityImage, formatTitle(sub), "h-64 w-full rounded-lg shadow-sm mb-4", "fa-solid fa-building text-slate-400 text-5xl")}
+                </div>
+                <p>The <strong>${formatTitle(sub)}</strong> facility at IIT Madhubani is designed to offer maximum support to students and staff, ensuring a comfortable, productive, and well-resourced campus environment.</p>
+            `;
+        }
+
+        function getPlacementContent(sub) {
+            return `<p>The Training and Placement Cell of IIT Madhubani bridges academia and industry by organizing technical training workshops, soft-skill sessions, mock interviews, and campus recruitment drives.</p>`;
+        }
+
+        function getGalleryContent(sub) {
+            return `
+                <p class="mb-4">Explore high-resolution photographs capturing our campus, laboratories, cultural events, and sports meets.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    ${siteImages.gallery.map(img => `
+                        <div onclick="openLightbox('${img.src || ''}', '${img.title}')" class="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 cursor-pointer group hover:shadow-md transition-shadow">
+                            ${renderOptionalImage(img.src, img.title, "h-48 w-full", "fa-solid fa-image text-slate-400 text-3xl")}
+                            <div class="p-3">
+                                <span class="text-[10px] text-govGold font-bold">${img.date}</span>
+                                <h4 class="font-bold text-slate-800 text-xs mt-0.5">${img.title}</h4>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function getAicteContent() {
+            return `<p>IIT Madhubani — Institute of Innovation and Technology, Madhubani is fully approved by the <strong>All India Council for Technical Education (AICTE), New Delhi</strong> under the Ministry of Education, Government of India.</p><p class="mt-3">All mandatory disclosure reports, institutional approvals, and intake capacity documents are publicly accessible.</p>`;
+        }
+
+        function getLoginContent(sub) {
+            return `
+                <div class="max-w-md mx-auto bg-slate-50 border border-slate-200 p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-center text-govBlue mb-4 uppercase text-sm">${formatTitle(sub)} Portal Login</h4>
+                    <form onsubmit="event.preventDefault(); showLoginNotice();" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">User ID / Email</label>
+                            <input type="text" required class="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-govBlue" placeholder="Enter your ID">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                            <input type="password" required class="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none focus:border-govBlue" placeholder="********">
+                        </div>
+                        <button type="submit" class="w-full bg-govBlue hover:bg-govDarkBlue text-white py-2 rounded text-xs font-bold transition-colors">Login to Portal</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function showLoginNotice() {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'fixed top-20 right-4 bg-green-600 text-white text-xs px-4 py-2 rounded shadow-lg z-50 transition-all';
+            alertDiv.innerHTML = 'Authentication simulation successful! Welcome to IIT Madhubani Portal.';
+            document.body.appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        function openLightbox(src, title) {
+            if (!src) return;
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-title').innerText = title;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        let currentFontSize = 15;
+        function adjustFontSize(size) {
+            const body = document.getElementById('main-body');
+            if (size === 'sm') currentFontSize = 13;
+            if (size === 'md') currentFontSize = 15;
+            if (size === 'lg') currentFontSize = 17;
+            body.style.fontSize = currentFontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            const body = document.getElementById('main-body');
+            body.classList.remove('theme-high-contrast', 'theme-sepia');
+            if (theme === 'high-contrast') {
+                body.classList.add('theme-high-contrast');
+            } else if (theme === 'sepia') {
+                body.classList.add('theme-sepia');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                renderRoute(hash);
+            } else {
+                renderRoute('home');
+            }
+        });
+    </script>
+</body>
+</html>
